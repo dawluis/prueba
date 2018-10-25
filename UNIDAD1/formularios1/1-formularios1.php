@@ -10,6 +10,7 @@ if(! isset($_REQUEST['enviar'])){
 ?>
 <html>
 <form action="">
+sdfsdf
 	<label>Nombre</label><input type="text" name="nombre"><br>
 	<label>Edad</label><input type="number" name="edad"><br>
 	<label>Email</label><input type="text" name="email"><br>
