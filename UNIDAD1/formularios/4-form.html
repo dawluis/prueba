@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    
+    
+    <style>
+    #form{
+    	border: 2px black solid;
+    	width:400px;
+    	margin: 0 auto;
+    	text-align:left;
+    }
+    
+    input{
+    	margin-bottom:10px;
+    }
+    
+    </style>
+    
+    
+    
+</head>
+<body>
+	    <form action="4-form.php" method="post" id="form">
+	    <label>INTRODUCE NUMERO 1</label><input type="number" name="numeroMenor"><br>
+	     <label>INTRODUCE NUMERO 2</label><input type="number" name="numeroMayor"><br>
+	     <input type="radio" name="tipoDeOperacion" value="*">producto
+	     <input type="radio" name="tipoDeOperacion" value="/">división
+	     <input type="radio" name="tipoDeOperacion" value="+">suma
+	     <input type="radio" name="tipoDeOperacion" value="-">resta
+	     
+	     <button type="submit">ENVIAR DATOS</button>
+	    </form>
+
+
+    
+</body>
+</html>

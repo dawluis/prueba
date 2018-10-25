@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    
+    
+    <style>
+    #form{
+    	border: 2px black solid;
+    	width:400px;
+    	margin: 0 auto;
+    	text-align:left;
+    }
+    
+    input{
+    	margin-bottom:10px;
+    }
+    
+    </style>
+    
+    
+    
+</head>
+<body>
+	    <form action="5-form.php" method="post" id="form">
+	    <label>INTRODUCE NUMERO 1</label><input type="number" name="numeroMenor"><br>
+	     <label>INTRODUCE NUMERO 2</label><input type="number" name="numeroMayor"><br>
+	     <input type="checkbox" name="tipo[]" value="+">suma
+	     <input type="checkbox" name="tipo[]" value="-">resta
+	     <input type="checkbox" name="tipo[]" value="*">multi
+	     <input type="checkbox" name="tipo[]" value="/">divi
+	     
+	     
+	  
+	     
+	     <button type="submit">ENVIAR DATOS</button>
+	    </form>
+
+
+    
+</body>
+</html>
