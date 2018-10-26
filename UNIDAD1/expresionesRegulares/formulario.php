@@ -12,7 +12,9 @@
             <option value="usuario">Usuario</option>
             <option value="email">Email</option>
             <option value="otro">otro</option>
-        </select>
+        </select><br>
+        <input type="text" name="expresion">
+        
         
         
         <input type="submit" name="enviar" value="Enviar">

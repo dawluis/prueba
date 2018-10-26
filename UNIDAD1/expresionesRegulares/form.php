@@ -37,22 +37,57 @@ if(isset($_POST['enviar'])){
               
                 break;
                 
+                
             case "direccion":
                 if(direccion($texto)){
-                    $resultado="LA CALLE ES CORRECTA";
+                    $resultado="LA DIRECCION ES CORRECTA";
                 }else{
-                    $resultado="LA CALLE ES INCORRECTA";
+                    $resultado="LA DIRECCION ES INCORRECTA";
                 }
                 
                 break;
+                
+            case "usuario":
+                if(compruebaUsuario($texto)){
+                    $resultado="LA USUARIA ES CORRECTA";
+                }else{
+                    $resultado="LA USUARIA ES INCORRECTA";
+                }
+                
+                break;
+                
+            case "email":
+                if(compruebaEmail($texto)){
+                    $resultado="LA CORREO ES CORRECTA";
+                }else{
+                    $resultado="LA CORREO ES INCORRECTA";
+                }
+                
+                break;
+                
+            case "otro":
+                if(empty($_POST['expresion'])){
+                    $error=true;
+                    $errores['expresion']="EL CAMPO EXPRESION ESTA VACIO POR FAVOR INTRODUCE COSITAS";
+                    
+                }else{
+                    $resultado=preg_match("/$texto/", $_POST['expresion']);
+                    
+                }
+                
+  
+                break;
         }
-        echo $resultado;
+       
         
     }
     if($error){
         print_r($errores);
         include 'formulario.php';
         
+    }else{
+        echo $resultado;
+        include 'formulario.php';
     }
     
     
