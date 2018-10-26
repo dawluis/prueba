@@ -58,31 +58,38 @@ La función devolverá verdadero o falso.*/
     
     function compruebaUsuario($usuario){
         
-        return preg_match("/^[a-zñ](a-zñ0-9_){8,24}^_$/i", $usuario);
-        
+        return preg_match("/^[a-z][a-zñ_0-9]{6,22}[^_]$/i", $usuario);
         
     }
-    
-    $usuario="holaquetalasd";
+    /*
+    $usuario="a23456789012345678901234";
     
     if(compruebaUsuario($usuario)){
-        echo "correcto";
+        echo compruebaUsuario($usuario);
     }else{
-        echo "incorrecto";
+        echo "NO VA";}
+     */
+    
+    /*Crea una función que compruebe si la cadena recibida corresponde con un email válido. Tener en cuenta  que para nuestro servidor de correo:
+    • El nombre de usuario tiene que comenzar por una letra y puede contener letras, números y símbolos como . y _. Como mínimo tendrá 3 caracteres antes de la  @
+    • El nombre de usuario estará seguido de @
+    • El nombre del dominio puede estar compuesto por letras y al menos un punto seguido por al menos dos letras. En ningún caso permitirá tildes ni la letra ñ.
+    • La función devolverá verdadero o falso.
+*/
+    
+    
+    function compruebaEmail ($email){
+        
+        return preg_match('/^[a-z][a-z0-9\._]{2,}@[a-z]+\.[a-z]{2,}$/', $email);
+        
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    $email="hola@hola.com";
+    /*
+    if(compruebaEmail ($email)){
+        echo compruebaEmail ($email);
+    }else{
+        echo "NO VA";}
+   */ 
     
 
 ?>
