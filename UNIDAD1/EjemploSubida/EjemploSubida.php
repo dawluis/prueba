@@ -22,7 +22,7 @@ If (! isset($_REQUEST['bAceptar'])) {
     $max_file_size = "200000";
     // Creamos una lista de extensiones válidas, por seguridad es lo más válido.
     $extensionesValidas = array(
-        "jpeg",
+        "jpg",
         "gif"
     );
     

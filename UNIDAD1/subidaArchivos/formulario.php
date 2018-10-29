@@ -9,7 +9,6 @@ if(isset($_POST['enviar'])){
     $nombre=recoge('nombre');
     $edad=recoge('edad');
     $email=recoge('email');
-    $foto=recoge('foto');
      
     if(cTexto($nombre)==0){
         $error=true;
@@ -25,10 +24,10 @@ if(isset($_POST['enviar'])){
     }
     
     //------------------------------IMAGENES--------------------//
-    $dir="archivos/";
+    $dir="imagenes/";
     $max_file_size = "51200";
     $extensionesValidas = array(
-        "jpeg",
+        "jpg",
         "gif"
     );
     $errorArchivo=false;
@@ -40,28 +39,21 @@ if(isset($_POST['enviar'])){
         $errorArchivo=true;
         switch ($_FILES['imagen']['error']) {
             case 1:
-                echo "UPLOAD_ERR_INI_SIZE <br>";
-                echo "Fichero demasiado grande<br>";
+                $erroresArchivos["UPLOAD_ERR_INI_SIZE"]="Fichero demasiado grande";
                 break;
             case 2:
-                echo "UPLOAD_ERR_FORM_SIZE<br>";
-                echo 'El fichero es demasiado grande<br>';
+                $erroresArchivos["UPLOAD_ERR_FORM_SIZE"]="El fichero es demasiado grande";
                 break;
             case 3:
-                echo "UPLOAD_ERR_PARTIAL<br>";
-                echo 'El fichero no se ha podido subir entero<br>';
+                $erroresArchivos["UPLOAD_ERR_PARTIAL"]="El fichero no se ha podido subir entero";
                 break;
             case 4:
-                echo "UPLOAD_ERR_NO_FILE<br>";
-                echo 'No se ha podido subir el fichero<br>';
+                $erroresArchivos["UPLOAD_ERR_NO_FILE"]="No se ha podido subir el fichero";
                 break;
             case 6:
-                echo "UPLOAD_ERR_NO_TMP_DIR<br>";
-                echo "Falta carpeta temporal<br>";
+                $erroresArchivos["UPLOAD_ERR_NO_TMP_DIR"]="Falta carpeta temporal";
             case 7:
-                echo "UPLOAD_ERR_CANT_WRITE<br>";
-                echo "No se ha podido escribir en el disco<br>";
-                
+                $erroresArchivos["UPLOAD_ERR_CANT_WRITE"]="No se ha podido escribir en el disco"; 
             default:
                 echo 'Error indeterminado.';
         }
@@ -70,7 +62,7 @@ if(isset($_POST['enviar'])){
         $fileName=$_FILES['imagen']['name'];
         $fileSize=$_FILES['imagen']['size'];
         $directorioTemp = $_FILES['imagen']['tmp_name'];
-        $arrayArchivo = pathinfo($nombreArchivo);
+        $arrayArchivo = pathinfo($fileName);
         
         /*
          * Extraemos la extensión del fichero, desde el último punto. Si hubiese doble extensión, no lo
@@ -83,7 +75,7 @@ if(isset($_POST['enviar'])){
             $erroresArchivos['extension'] = "La extensión del archivo no es válida o no se ha subido ningún archivo";
         }
         // Comprobamos el tamaño del archivo
-        if ($filesize > $max_file_size) {
+        if ($fileSize > $max_file_size) {
             $errorArchivo=true;
             $erroresArchivos['tamaño'] = "La imagen debe de tener un tamaño inferior a 50 kb";
         }
@@ -103,20 +95,23 @@ if(isset($_POST['enviar'])){
             }
         }else{
             $error=true;
-            $errores['imagen']=print_r($erroresArchivos);
+            $errorArchivo=true;
             
         }
-        
-        
-        
-        
-    
+       
     }
      
-    if(($error==true)||($errorArchivo==true)){  
-     print_r($errores);
+    if(($error==true)||($errorArchivo==true)){
+        if(!empty($errores)){
+            print_r($errores);
+        }
+        if(!empty($errores)){
+            print_r($erroresArchivos);
+        }
+     
+     
       ?>
-    <form action="" method="POST">
+    <form action="formulario.php" method="POST" enctype="multipart/form-data">
     <label>Nombre</label><input type="text" name="nombre"><br><br>
     <label>Edad</label><input type="number" name="edad"><br><br>
     <label>Email</label><input type="text" name="email"><br><br>
@@ -129,6 +124,7 @@ if(isset($_POST['enviar'])){
         echo "TODOS LOS DATOS SON CORRECTOS<br>";
         echo "$exitoArchivo<br>";
         echo "Nombre: $nombre <br> Edad: $edad <br> Email: $email <br>";
+        echo "imagen del usuario: <br> <img src='$nombreCompleto'>";
         
     }
     
@@ -138,7 +134,7 @@ if(isset($_POST['enviar'])){
     
 }else{
     ?>
-    <form action="" method="POST">
+    <form action="formulario.php" method="POST" enctype="multipart/form-data">
     <label>Nombre</label><input type="text" name="nombre"><br><br>
     <label>Edad</label><input type="number" name="edad"><br><br>
     <label>Email</label><input type="text" name="email"><br><br>
