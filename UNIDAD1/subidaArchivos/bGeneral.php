@@ -36,14 +36,15 @@ function sinEspacios($frase) {
 	return $texto;
 }
 
-function recoge($var)
-{
-    if (isset($_REQUEST[$var]))
-		$tmp=strip_tags(sinEspacios($_REQUEST[$var]));
-	else 
-		$tmp= "";
-	
-	return $tmp;
+
+function recoge($var){
+    
+    if(isset($_REQUEST[$var])){
+        $tmp=strip_tags(sinEspacios($_REQUEST[$var]));
+    }else{
+        $tmp="no se pudo recoger el nombre";
+    }
+    return $tmp;
 }
 
 

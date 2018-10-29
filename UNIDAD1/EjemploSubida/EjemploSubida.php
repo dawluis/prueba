@@ -17,13 +17,12 @@ If (! isset($_REQUEST['bAceptar'])) {
 } else {
     // Carpeta para ubicación definitiva. Ruta relativa al fichero actual.
     // Tiene que estar creada esta carpeta, sino da error
-    $dir = "archivos/";
+    $dir = "imagenes/";
     // Tamaño máximo aceptado, si queremos que sea inferior al configurado en php.ini
-    $max_file_size = "51200";
+    $max_file_size = "200000";
     // Creamos una lista de extensiones válidas, por seguridad es lo más válido.
     $extensionesValidas = array(
-        "jpg",
-        "png",
+        "jpeg",
         "gif"
     );
     
