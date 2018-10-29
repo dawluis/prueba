@@ -98,7 +98,6 @@ if(isset($_POST['enviar'])){
             $errorArchivo=true;
             
         }
-       
     }
      
     if(($error==true)||($errorArchivo==true)){
@@ -108,7 +107,6 @@ if(isset($_POST['enviar'])){
         if(!empty($errores)){
             print_r($erroresArchivos);
         }
-     
      
       ?>
     <form action="formulario.php" method="POST" enctype="multipart/form-data">
@@ -120,18 +118,11 @@ if(isset($_POST['enviar'])){
     </form>
 	<?php       
     }else{
-        
         echo "TODOS LOS DATOS SON CORRECTOS<br>";
         echo "$exitoArchivo<br>";
         echo "Nombre: $nombre <br> Edad: $edad <br> Email: $email <br>";
         echo "imagen del usuario: <br> <img src='$nombreCompleto'>";
-        
-    }
-    
-    
-    
-    
-    
+    } 
 }else{
     ?>
     <form action="formulario.php" method="POST" enctype="multipart/form-data">
