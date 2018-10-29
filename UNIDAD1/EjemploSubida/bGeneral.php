@@ -8,7 +8,7 @@ function cabecera($titulo) //el archivo actual
 			<head>
 				<title>
 				<?php
-				echo $titulo;
+				echo $titulo;//esto es pa tal
 				?>
 			
 			</title>
