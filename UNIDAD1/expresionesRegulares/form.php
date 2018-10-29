@@ -1,5 +1,4 @@
 <?php
-//pavila
 include 'bGeneral.php';
 include 'expresionesRegulares.php';
 $error= false;
