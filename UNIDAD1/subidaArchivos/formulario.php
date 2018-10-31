@@ -22,33 +22,42 @@ if(isset($_POST['enviar'])){
         $error=true;
         $errores['email']="El email no es correcto";
     }
+    if($_FILES['imagen']['name']==""){
+        $error=true;
+        $errores['imagen']="No se ha subido ninguna imagen";
+    }
     
      
     if($error){
         
-       print_r($erroresArchivos);
+       print_r($errores);
      
       
     include 'form.php';
 	    
     }else{
+        
+            
+        
         $var='imagen';
         $dir="imagenes/";
-        $max_file_size = "51200";
+        $max_file_size = "512000";
         $extensionesValidas = array(
             "jpg",
-            "gif"
+            "gif",
+            "png"
         );
         $resultadoSubida=subidaArchivos($var, $dir, $max_file_size, $extensionesValidas);
         if(is_array ($resultadoSubida)){
-            echo "ha fallado la subida de la imagen";
+            echo "ha fallado la subida de la imagen<br>";
+            print_r($resultadoSubida);
             
         }else{
             echo "TODOS LOS DATOS SON CORRECTOS<br>";
             echo "Nombre: $nombre <br> Edad: $edad <br> Email: $email <br>";
             echo "imagen del usuario: <br> <img src='$resultadoSubida' width='250px'>";
         }
-    } 
+        }
 }else{
     include 'form.php';
 }
