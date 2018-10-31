@@ -82,7 +82,7 @@ function validaEmail ($email){
 function subidaArchivos($var,$dir,$max_file_size,$extensionesValidas){
     
     $errorArchivo=false;
-    $erroresArchivos=[];
+    $erroresArchivos;
     if ($_FILES[$var]['error'] != 0) {
         $errorArchivo=true;
         switch ($_FILES[$var]['error']) {

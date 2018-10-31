@@ -3,7 +3,7 @@ include 'bGeneral.php';
 
 $error=false;
 $errores=[];
-
+//as
 if(isset($_POST['enviar'])){
     
     $nombre=recoge('nombre');
@@ -29,16 +29,10 @@ if(isset($_POST['enviar'])){
     
      
     if($error){
-        
-       print_r($errores);
-     
-      
-    include 'form.php';
-	    
+       print_r($errores); 
+       
+    include 'form.php';    
     }else{
-        
-            
-        
         $var='imagen';
         $dir="imagenes/";
         $max_file_size = "512000";
