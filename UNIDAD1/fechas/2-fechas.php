@@ -1,4 +1,3 @@
-
 <?php
 /*Realiza una función que acepte una fecha como cadena c
  * on el formato aaaa-mm-dd compruebe si la fecha es correcta

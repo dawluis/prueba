@@ -13,14 +13,20 @@ function compruebaFecha($fecha){
     $fechaValida= checkdate($month, $day, $year);
     
     if($fechaValida){
-        return "LA FECHA ES VALIDA Y EN FORMATO UNIX ES: ".mktime(0,0,0, $month, $day, $year);
+        return $trozosFecha;
+        
     }else{
-        return "fecha no valida";
+        return false;
     }
     
 }
 
-echo compruebaFecha($fecha);
+if(is_array($fecha)){
+    echo "LA FECHA ES VALIDA";
+}else{
+    
+    echo "fecha no valida";
+}
 
 
 
