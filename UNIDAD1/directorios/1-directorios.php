@@ -3,8 +3,10 @@
 function devuelveDir($rutaDir){
     $dir=opendir($rutaDir);
     $array=[];
-    while($archivo = readdir($dir)){  
-        $array[]=$archivo;
+    while($archivo = readdir($dir)){
+        if($archivo!="." && $archivo!=".."){
+            $array[]=$archivo;
+        }
     }
     return $array;
 
@@ -20,33 +22,24 @@ function devuelveDirSubDir($rutaDir){
         
         if($archivo!="." && $archivo!=".."){
         
-            if(is_dir($archivo)){
-            /*$rutaSub=$rutaDir."/".$archivo;
-            $subDir=opendir($rutaSub);
-            while ($elemento=readdir($subDir)){
-                $array[]=$rutaDir."/".$archivo."/".$elemento;
-                
-            }*/
+            if(is_dir($rutaDir."/".$archivo)){
+                $rutaSub=$rutaDir."/".$archivo;
+                $subDir=opendir($rutaSub);
             
-            echo "sadadsasdasdasdsad";
+                while ($elemento=readdir($subDir)){
+                    
+                    if($elemento!="." && $elemento!=".."){
+                    
+                        $array[]=$rutaDir."/".$archivo."/".$elemento;
+                    }
+                }
             }else{
                 $array[]=$rutaDir."/".$archivo;
             }
-      
-        }else{
-            
-        }
-        
-       
-        
-    }
-    
-    
+        }  
+    } 
     return $array;
 }
-
-$rutaDir="carpeta";
-print_r(devuelveDirSubDir($rutaDir));
 
 
 
