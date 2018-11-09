@@ -9,13 +9,13 @@ echo "<tr>";
 foreach($arrayFotos as $index){
     
     if($contador == 2){
-        echo "</tr>"; 
+        echo "</tr>";
         echo "<tr>";
-        $contador=0; 
+        $contador=0;
     }
-        echo "<td><img src='$carpeta"."/"."$index'"." style='width:150px' ></td>";
+    echo "<td><img src='$carpeta"."/"."$index'"." style='width:150px' ></td>";
     $contador++;
-    }
-    echo "</tr>";
-    echo "</table>";
+}
+echo "</tr>";
+echo "</table>";
 ?>

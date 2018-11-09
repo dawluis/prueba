@@ -4,7 +4,9 @@ function devuelveDir($rutaDir){
     $array=[];
     while($archivo = readdir($dir)){
         if($archivo!="." && $archivo!=".."){
-            $array[]=$archivo;
+            if(is_file($rutaDir."/".$archivo)){
+                $array[]=$archivo;
+            }
         }
     }
     return $array;
