@@ -1,20 +1,11 @@
 <?php
-
 include '1-fechas.php';
-
-
-
-function estacionImagen ($fecha){
-    
+function estacionImagen ($fecha){  
     if(compruebaFecha($fecha)==false){
-        
         return "fecha incorrecta";
-    
     }else{
-        
         $trozosFecha=compruebaFecha($fecha);
         $mes=$trozosFecha[1];
-        
         switch($mes){
             
             case 2; case 1; case 12;

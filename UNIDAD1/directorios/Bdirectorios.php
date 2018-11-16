@@ -35,22 +35,25 @@ function devuelveDirSubDir($rutaDir){
 }
 
 function recorreArrayMultiDimensional($arrayMulti){
+    $arrayGlobal;
     foreach($arrayMulti as $index =>$valor){
         
         if(is_array($valor)){
             
             foreach($valor as $indice =>$dato){
-                
-                echo"[$index] [$indice] : $dato <br>";
+                $arrayGlobal[]=$dato;
+                //echo"$dato";
                 
             }
             
             
         }else{
-            echo"[$index] : $valor <br>";
+            $arrayGlobal[]=$valor;
+            //echo"$valor";
             
         }
     }
+    return $arrayGlobal;
 }
 /*
 $arrayMulti= Array(
