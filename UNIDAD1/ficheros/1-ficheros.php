@@ -74,8 +74,10 @@ function contador($archivo){
         $numero=intval($numero);
         
         fwrite($file, $numero+1);
-        
+      
         fclose($file); 
+        
+        return $numero+1;
             
     }else{
     $file= fopen($archivo, "w+");
@@ -83,12 +85,70 @@ function contador($archivo){
     fwrite($file, 1);
     
     fclose($file);
+    return 1;
+    }
+}
+/*
+echo contador("counter.txt");
+*/
+function escribirComentario($nombre, $email, $comentario, $nombreArchivo){
+    $time=time();
+    $fecha=date("d-m-Y", $time);
+    $hora=date("H:i:s", $time);
+    if($file=fopen($nombreArchivo, "a+")){
+        fwrite($file, $nombre.",");
+        fwrite($file, $email.",");
+        fwrite($file, $comentario.",");
+        fwrite($file, $fecha.",");
+        fwrite($file, $hora.PHP_EOL);
+        fclose($file);
+        return true;
+    }else{
+        return false;
     }
 }
 
-contador("counter.txt");
-
-
+function lectorComentarios($nombreArchivo){
+    $coments=[];
+    $i;
+    if(file_exists($nombreArchivo)){
+        if($file=fopen($nombreArchivo, "r+")){
+      
+            while(!feof($file)){
+                $linea=fgets($file);
+                $coments[]=$linea;
+                
+            }
+            rewind($file);
+            fclose($file);
+            
+            if(count($coments) > 2){
+                for($i=count($coments)-2; $i>=0; $i--){
+                    $cadena=$coments[$i];
+                    $comentario=explode(',', $cadena);
+                    
+                    echo "$comentario[0], (<span style='color:blue;'><u>$comentario[1]</u></span>) escrito el $comentario[3] a las $comentario[4] : <br> <div id='comentario'> <p>$comentario[2] </p> </div><br>";
+                    
+                }  
+            }else{
+                $cadena=$coments[0];
+                $comentario=explode(',', $cadena);
+                echo "$comentario[0],(<span style='color:blue;'><u>$comentario[1]</u></span>) escrito el $comentario[3] a las $comentario[4] : <br>$comentario[2] <br>";
+            }
+            
+           
+            
+            
+        }
+        
+        
+    }else{
+        
+    }
+    
+    
+    
+}
 
 
 
