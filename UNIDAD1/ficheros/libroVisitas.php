@@ -14,8 +14,11 @@
 	<style type="text/css">
 	
 	#comentario{
-	display:flex;
+	display: flex;
+	white-space: pre-wrap;
 	word-wrap: break-word;
+	word-break: break-all;
+	width:500px;
 	
 	}
 	
@@ -58,13 +61,13 @@
 	    }else{
 	        ?>
 	        <form action="<?=$_SERVER ['PHP_SELF'] //el archivo actual?>" method="POST">
-	        Tu comentario <br> <textarea name="comentario" id="" cols="30" rows="10"></textarea>
+	        Tu comentario <br> <textarea name="comentario" id="" cols="30" rows="10"><?php if(isset($_POST['nombre'])){echo $_POST['comentario'];}?></textarea>
 	        <?php if(isset($errores['comentario'])){echo $errores['comentario'];}?>
 	        <br>
-	        Tu nombre <br> <input type="text" name="nombre" >
+	        Tu nombre <br> <input type="text" name="nombre" value="<?php if(isset($_POST['nombre'])){echo $_POST['nombre'];}?>">
 	         <?php if(isset($errores['nombre'])){echo $errores['nombre'];}?>
 	        <br>
-	        Tu email <br> <input type="text" name="email">
+	        Tu email <br> <input type="text" name="email" value="<?php if(isset($_POST['nombre'])){echo $_POST['email'];}?>">
 	        <?php if(isset($errores['email'])){echo $errores['email'];}?>
 	        <br> <br>
 	        <input type="submit" name="enviar" value="Enviar">
