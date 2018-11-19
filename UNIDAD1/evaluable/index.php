@@ -13,7 +13,7 @@ if(!isset($_REQUEST['enviar'])){
     $nombreUsuario=recoge('nombreUsuario');
     $contrasena=recoge('contrasena');
     $email=recoge('email');
-    $fechaNacimiento=recoge('fecha');
+    $fechaNacimiento=strval(recoge('fecha'));
     
     if(empty($nombre)||!validaNombre($nombre)){
         $error=true;
@@ -41,7 +41,7 @@ if(!isset($_REQUEST['enviar'])){
             $errores['fecha']="La fecha no es correcta"; 
         }
     }
-    if(!isset($_FILES['img'])){
+    if($_FILES['img']['name']==""){
         $error=true;
         $errores['img']="no se ha introducido imagen";
     }

@@ -14,22 +14,33 @@ if(!isset($_REQUEST['consulta'])){
         if($seleccion=="mostrarUsuarios"){
             $archivo="usuarios.txt";
             $file=fopen($archivo, 'r+');
-            
+            echo "<h2>USUARIOS</h2>";
             while(!feof($file)){
                 
                 $linea=fgets($file);
+                if($linea==""){
+                }else{
                 $usuario=preg_split('/;/', $linea);
-                echo $usuario[0];
+                
+                echo "<b>Nombre :$usuario[0]</b><br>Nombre de Usuario: $usuario[1]<br>Email: $usuario[3]<br><hr>";
+            }
             }
         }else if($seleccion=="mostrarImagenes"){
             $archivo="usuarios.txt";
             $file=fopen($archivo, 'r+');
             
+            echo "<table border='1px>'";
+            echo "<caption>IMAGENES DE USUARIOS</caption>";
             while(!feof($file)){
                 $linea=fgets($file);
-                $usuario=preg_split('/;/', $linea);
-                echo "<img src='".$usuario[4]."'><br>";
-        }
+                if($linea==""){
+                }else{
+                    $usuario=preg_split('/;/', $linea);
+                    echo "<tr><td>$usuario[0]</td><td><img src='".$usuario[4]."' width='200px'></td></tr>";
+                }
+            }
+            
+            echo "</table>";
     }else{
         ?>
         <h4>SELECCIONA UNO</h4>

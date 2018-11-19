@@ -106,17 +106,15 @@ function validaNombreUsuario($nombreUsuario){
 
 function validaFecha($fecha){
     $trozosfecha=preg_split('/[\/-]/', $fecha);
-    if(is_array($trozosfecha)){
-        
-    if(checkdate($trozosfecha[1], $trozosfecha[0], $trozosfecha[2])){
+    if(checkdate($trozosfecha[2], $trozosfecha[1], $trozosfecha[0])){
         return 1;
     }else{
         return 0; 
     }
-    }else{
-        return 0;
-    }
 }
+
+
+//echo validaFecha("02/03/1993");
 
 function validaContrasena($contrasena){
     

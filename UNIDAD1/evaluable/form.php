@@ -9,7 +9,7 @@
          <br>
         Email <br> <input type="email" name="email" >
         <br>
-        Fecha de nacimiento <br> <input type="date" name="fecha" >
+        Fecha de nacimiento <br> <input type="date" name="fecha">
         <br>
         foto de perfil <br> <input type="file" name="img">
         <br> <br>
