@@ -82,7 +82,7 @@ function validaEmail ($email){
 
 function validaNombre($nombre){
 
-    if(preg_match('/^[a-z ]{1,50}$/i', $nombre)){
+    if(preg_match('/^[a-z ]{2,50}$/i', $nombre)){
         return 1;
     }else{
         return 0;
@@ -106,7 +106,16 @@ function validaNombreUsuario($nombreUsuario){
 
 function validaFecha($fecha){
     $trozosfecha=preg_split('/[\/-]/', $fecha);
-    return checkdate($trozosfecha[1], $trozosfecha[0], $trozosfecha[2]);
+    if(is_array($trozosfecha)){
+        
+    if(checkdate($trozosfecha[1], $trozosfecha[0], $trozosfecha[2])){
+        return 1;
+    }else{
+        return 0; 
+    }
+    }else{
+        return 0;
+    }
 }
 
 function validaContrasena($contrasena){
