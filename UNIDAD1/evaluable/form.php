@@ -10,7 +10,7 @@
         Email <br> <input type="email" name="email" >
         <br>
         Fecha de nacimiento <br> <input type="date" name="fecha">
-        <br>
+        <br><br>
         foto de perfil <br> <input type="file" name="img">
         <br> <br>
         <input type="submit" name="enviar">
