@@ -104,7 +104,7 @@ function subidaArchivos($var,$dir,$max_file_size,$extensionesValidas){
                 $erroresArchivos["UPLOAD_ERR_CANT_WRITE"]="No se ha podido escribir en el disco";
             default:
                 $erroresArchivos["INDETERMINADO"]="Error";
-            
+                
                 return $erroresArchivos;
         }
     } else {
@@ -140,7 +140,7 @@ function subidaArchivos($var,$dir,$max_file_size,$extensionesValidas){
             
             if (move_uploaded_file($directorioTemp, $nombreCompleto)) {
                 return $nombreCompleto;
-            
+                
             } else {
                 $errorArchivo=true;
                 $erroresArchivos['moveArchivo']= "Error: No se puede mover el fichero a su destino";
@@ -151,7 +151,7 @@ function subidaArchivos($var,$dir,$max_file_size,$extensionesValidas){
             return $erroresArchivos;
             
         }
-    
+        
     }
 }
 ?>
