@@ -106,7 +106,7 @@ function validaNombreUsuario($nombreUsuario){
 
 function validaFecha($fecha){
     $trozosfecha=preg_split('/[\/-]/', $fecha);
-    if(checkdate($trozosfecha[2], $trozosfecha[1], $trozosfecha[0])){
+    if(checkdate($trozosfecha[1], $trozosfecha[0], $trozosfecha[2])){
         return 1;
     }else{
         return 0; 
