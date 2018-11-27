@@ -1,6 +1,6 @@
 <h2>Mi pagina</h2>
 <h3>Alta como usuario</h3>
-    <form action="<?=$_SERVER ['PHP_SELF'] //el archivo actual?>" method="POST" enctype="multipart/form-data">
+    <form action="<?=$_SERVER ['PHP_SELF']?>" method="POST" enctype="multipart/form-data">
         Tu nombre <br> <input type="text" name="nombre" >
         <br>
         Nombre Usuario <br> <input type="text" name="nombreUsuario" >

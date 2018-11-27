@@ -58,6 +58,8 @@ if(!isset($_REQUEST['consulta'])){
       
     }
     
+    }else{
+        include 'formCorrecto.php';
     }
 }
 pie();

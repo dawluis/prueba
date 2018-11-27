@@ -10,7 +10,7 @@ $fecha="2018-2-22";
 
 function compruebaFecha2($fecha){
     
-    $trozosFecha=explode("-", $fecha);
+    $trozosFecha=preg_split('/[\/-]/', $fecha);
     
     $day=$trozosFecha[2];
     $month=$trozosFecha[1];
@@ -19,7 +19,7 @@ function compruebaFecha2($fecha){
     $fechaValida= checkdate($month, $day, $year);
     
     if($fechaValida){
-        return "LA FECHA ES VALIDA Y EN FORMATO UNIX ES: ".mktime(0,0,0, $month, $day, $year);
+        return "LA FECHA ES VALIDA Y EN FORMATO UNIX ES: ".mktime($month, $day, $year);
     }else{
         return "fecha no valida";
     }
