@@ -25,4 +25,16 @@
 		<nature>org.eclipse.php.core.PHPNature</nature>
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>POO/classArray.php</name>
+			<type>1</type>
+			<location>C:/Users/Usuario_7K/Downloads/classArray.php</location>
+		</link>
+		<link>
+			<name>POO/classValidar.php</name>
+			<type>1</type>
+			<location>C:/Users/Usuario_7K/Downloads/classValidar.php</location>
+		</link>
+	</linkedResources>
 </projectDescription>
