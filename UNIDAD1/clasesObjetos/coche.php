@@ -1,6 +1,5 @@
 <?php
 class Coche{
-    
     //atributos o propiedades
     public $color;
     public $marca;
@@ -56,26 +55,8 @@ class Coche{
         $informacion .="<br>marca: ".$miObjeto->marca;
         
         return $informacion;
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    } 
     
 }
+
 ?>

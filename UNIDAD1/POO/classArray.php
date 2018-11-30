@@ -5,6 +5,7 @@ class manejoArray
     private $contador=0;
     private $data;
     private $pila;
+    
 
     // Creamos el array
     function __construct()
@@ -78,12 +79,10 @@ class manejoArray
         unset($this->data[$UltimaKey]);
     }
     
-    
 }
 
 // Instanciamos objeto
 $objArray = new manejoArray();
-
 
 //Añadimos dos elemento sin key
 $objArray->add("Hola");
@@ -97,7 +96,6 @@ echo $objArray->showCont();
 $objArray->eliminaUltimo();
 echo "<br><br>ELIMINO EL ULTIMO Y AHORA EL ARRAY ES:<br><br>";
 print_r($array);
-
 
 
 

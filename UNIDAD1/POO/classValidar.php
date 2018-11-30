@@ -23,14 +23,18 @@ class Validacion
   if(!is_array($rule)){
    $this->mensaje = "las reglas deben de estar en formato de arreglo";
    return $this;
-  }  
+  }
+  
   foreach($rule as $key => $rules){
    $reglas = explode(',',$rules['regla']);
+   
    if(array_key_exists($rules['name'],$data)){
     foreach($data as $indice => $valor){     
-     if($indice === $rules['name']){
-      foreach($reglas as $clave => $valores){ 
+        if($indice === $rules['name']){
+            foreach($reglas as $clave => $valores){ 
+       
        $validator = $this->_getInflectedName($valores);        
+       
        if(!is_callable(array($this, $validator))){
           throw new BadMethodCallException("No se encontro el metodo actual");
        }
@@ -58,6 +62,7 @@ class Validacion
  */
  private function _getInflectedName($text)
  {
+  $validator="";
   $_validator = preg_replace('/[^A-Za-z0-9]+/',' ',$text);
   $arrayValidator = explode(' ',$_validator);    
   if(count($arrayValidator) > 1){
@@ -75,7 +80,42 @@ class Validacion
   }    
   return $validator;
  }
-  
+ 
+ 
+ protected function _cTexto ($campo, $valor)
+ {
+     if(preg_match("/^[A-Za-zÑñ]+$/",$valor)){
+         return true;
+     }
+     else{
+         $this->mensaje[$campo][] = "el campo $campo debe contener solo letras";
+         return false;
+     }
+ }
+ 
+ protected function _validaNombreUsuario($campo, $valor){
+     
+     if(preg_match('/^[a-z0-9\*_\$]{3,50}$/i', $valor)){
+         
+         return true;
+     }else{
+         $this->mensaje[$campo][] = "el campo $campo debe contener solo letras y numeros con un tamaño minimo de 3 y un maximo de 50";
+         return false;
+     }
+     
+ }
+ function validaContrasena($campo, $valor){
+     
+     if(preg_match('/^[a-zA-z0-9\*_]{8,20}$/', $valor)){
+         
+         return true;
+     }else{
+         $this->mensaje[$campo][] = "el campo $campo debe contener solo letras, numeros, * y _ con un tamaño minimo de 8 y un maximo de 20";
+         return false;
+     }
+     
+ }
+ 
  /**
  * Metodo de verificacion de que el dato no este vacio o NULL
  * El metodo retorna un valor verdadero si la validacion es correcta de lo contrario retorna un valor falso
@@ -128,16 +168,16 @@ class Validacion
 }
 
 //el uso de la clase es muy sencillo aca dejo las pruebas que realice a la clase
-
+/*
 $_POST['campo1'] = 1;
 $_POST['campo2'] = "usuario@hotmail.com";
 $datos = $_POST;
 $validacion =  new Validacion();
 $regla = array(
-   array('name'=>'campo1','regla'=>'no-empty,numeric'),
-   array('name'=>'campo2','regla'=>'no-empty,email')
+   array('name'=>'nombre','regla'=>'no-empty,numeric'),
+   array('name'=>'nombreUsuario','regla'=>'no-empty,email')
   );
 $validaciones = $validacion->rules($regla,$datos);
-print_r($validaciones);
+print_r($validaciones);*/
 
 ?>
