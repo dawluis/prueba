@@ -18,10 +18,10 @@ if(!isset($_REQUEST['enviar'])){
     $datos=$_POST;
     $validar= new Validacion();
     $regla=array(
-        array('name'=>'nombre','regla'=>'no-empty,texto'),
-        array('name'=>'nombreUsuario','regla'=>'no-empty,nombreUsuario'),
-        array('name'=>'password','regla'=>'no-empty,contrasena'),
-        array('name'=>'email','regla'=>'no-empty,email')
+        array('name'=>'nombre','regla'=>'no-empty,numeric'),
+        array('name'=>'email','regla'=>'no-empty,email'),
+        array('name'=>'nombre','regla'=>'no-empty,nombre'),
+        array('name'=>'contrasena','regla'=>'no-empty,contrasena')
     );
     $validaciones= $validar->rules($regla,$datos);
     

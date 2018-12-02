@@ -3,7 +3,7 @@
 class manejoArray
 {
     private $contador=0;
-    private $data;
+    public $data;
     private $pila;
     
 
@@ -69,14 +69,27 @@ class manejoArray
     }
     
     public function eliminaPrimero(){
-        unset($this->data[$this->pila[0]]);
+        unset($this->data[0]);
+        unset($this->pila[0]);
+        $this->contador--;
         return true;
     }
     public function eliminaUltimo(){
-        $arrayPila=$this->pila;
-        $longitudArray=count($arrayPila);
-        $UltimaKey=$arrayPila[$longitudArray];
-        unset($this->data[$UltimaKey]);
+        $array=$this->data;
+        $cont=count($array);
+        unset($this->data[$cont-1]);
+        $this->contador--;
+        return true;
+    }
+    
+    
+    public function muestraArray(){
+        $array=$this->data;
+        $count=count($array);
+        
+        foreach ($array as $index => $value){
+            
+        }
     }
     
 }
@@ -87,15 +100,23 @@ $objArray = new manejoArray();
 //Añadimos dos elemento sin key
 $objArray->add("Hola");
 $objArray->add("Adios");
-$objArray->add("Mas cosas", "indice");
+$objArray->add("otraCOsa");
+$objArray->add("otraCOsa", "llave");
+
 $array=$objArray->getArray();
 
 print_r($array);
 echo "<br><br>CONTADOR:<br><br>";
 echo $objArray->showCont();
+$objArray->eliminaPrimero();
+
+echo "<br><br>ELIMINO EL ULTIMO Y AHORA EL ARRAY ESTO:<br><br>";
+
 $objArray->eliminaUltimo();
-echo "<br><br>ELIMINO EL ULTIMO Y AHORA EL ARRAY ES:<br><br>";
-print_r($array);
+$array=$objArray->getArray();
+print_r($objArray->data);
+echo "<br>";
+echo $objArray->showCont();
 
 
 

@@ -104,6 +104,10 @@ class Informatico extends Persona{
 class TecnicoRedes extends Informatico{
     public $auditarRedes;
     
+    public function __construct(){
+        $this->auditarRedes= 'experto';
+    }
+    
     public function auditoria(){
         return "estoy auditando esta red";
     }
