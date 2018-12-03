@@ -14,7 +14,7 @@ if(!isset($_REQUEST['enviar'])){
 //si ya se ha pulsado enviar hacemos todas las validaciones y comrpobaciones    
 }else{
     
-    include '../classValidar.php';
+    include 'classValidar.php';
     $datos=$_POST;
     $validar= new Validacion();
     $regla=array(

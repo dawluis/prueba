@@ -69,27 +69,42 @@ class manejoArray
     }
     
     public function eliminaPrimero(){
-        unset($this->data[0]);
-        unset($this->pila[0]);
+        $valor=$this->pila[0];
+        unset($this->data[$valor]);
         $this->contador--;
-        return true;
     }
+    
     public function eliminaUltimo(){
-        $array=$this->data;
-        $cont=count($array);
-        unset($this->data[$cont-1]);
+        $arreglo=$this->pila;
+        $cont=count($arreglo);
+        $val=$this->pila[$cont-1];
+        unset($this->data[$val]);
         $this->contador--;
-        return true;
     }
     
     
-    public function muestraArray(){
-        $array=$this->data;
-        $count=count($array);
-        
+    public static  function muestraArray($array){
         foreach ($array as $index => $value){
-            
+            if(is_array($value)){
+                self::muestraArray($array[$index]);
+            }else{
+                $vector[$index]=$value;
+            }
         }
+        return $vector;
+    }
+    
+    
+    public function ordenaArrayPorKey(){
+        $array=$this->data;
+        ksort($array);
+        $this->data=$array;
+    }
+    
+    public function ordenaArrayPorValor(){
+        $array=$this->data;
+        $arrayOrdenado= asort($array);
+        $this->data=$arrayOrdenado;
     }
     
 }
@@ -98,25 +113,34 @@ class manejoArray
 $objArray = new manejoArray();
 
 //Añadimos dos elemento sin key
-$objArray->add("Hola");
-$objArray->add("Adios");
-$objArray->add("otraCOsa");
-$objArray->add("otraCOsa", "llave");
+$objArray->add("Hola","x");
+$objArray->add("hola", "b");
+$objArray->add("hola", "c");
+$objArray->add("hola", "a");
 
 $array=$objArray->getArray();
 
 print_r($array);
 echo "<br><br>CONTADOR:<br><br>";
 echo $objArray->showCont();
-$objArray->eliminaPrimero();
+
 
 echo "<br><br>ELIMINO EL ULTIMO Y AHORA EL ARRAY ESTO:<br><br>";
-
+$objArray->eliminaPrimero();
 $objArray->eliminaUltimo();
 $array=$objArray->getArray();
 print_r($objArray->data);
 echo "<br>";
 echo $objArray->showCont();
+echo "<br>";
+$objArray->ordenaArrayPorKey();
+$array=$objArray->getArray();
+print_r($array);
+echo "<br>";
+$objArray->eliminaUltimo();
+print_r($objArray->data);
+var_dump($objArray->muestraArray($array));
+
 
 
 
