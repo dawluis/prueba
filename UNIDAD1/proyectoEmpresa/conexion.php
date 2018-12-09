@@ -1,16 +1,10 @@
 <?php
-$conexion = mysqli_connect("localhost","root","","phpmysql");
-
-//comprobar si la conexion es correcta
-
-if(mysqli_connect_errno()){
-    echo "la conexion a la base de datos mysql ha fallado".mysqli_connect_errno();
-}else{
-    echo "conexion realizada correctamente";
+try{
+    $base=new PDO('mysql:host=localhost; dbname=contabilidad', 'root','');
+    $base->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $base->exec("SET CHARACTER SET UTF8");
+}catch (Exception $e){
+    die('Error: '.$e->getMessage());
 }
-echo "<br>";
 
-//Consulta para configurar la codificacion de caracteres
-
-mysqli_query($conexion, "SET NAMES UTF8");
 ?>
