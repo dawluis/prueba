@@ -5,8 +5,8 @@
        Fecha de Nacimiento <input type="date" name="fecha_nacimiento"><br>
        Salario<input type="number" name="salario"><br>
        Localidad <select name="localidad">
-        <option value="1">Madrid</option>
-        <option value="1">Madrid</option>
+        <option value="Valencia">Valencia</option>
+        <option value="Picassent">Picassent</option>
      	 </select><br>
           <button type="submit" name="enviar">Enviar</button>
     </form>

@@ -1,9 +1,6 @@
 <?php
 include 'config.php';
 
-
-
-
 class modelo extends PDO{
     
     private static $instance=null; 
@@ -30,7 +27,4 @@ class modelo extends PDO{
     
     
 }
-
-
-
 ?>
