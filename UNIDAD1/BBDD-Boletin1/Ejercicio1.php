@@ -2,7 +2,6 @@
 include 'conexionDB.php';
 
 $db= modelo::GetInstance();
-
 $result=$db->getAll();
 while($registro= $result->fetch()){
     echo "Id : ".$registro['id']."<br>";

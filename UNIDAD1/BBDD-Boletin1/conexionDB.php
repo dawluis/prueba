@@ -6,7 +6,7 @@ class modelo extends PDO{
     private static $instance=null; 
     
     public function __construct(){
-        parent::__construct('mysql:host=' . Config::$hostname . ';dbname=' . Config::$name . '', Config::$usuario, Config::$clave);
+        parent::__construct('mysql:host=' .Config :: $hostname. ';dbname=' . Config::$name . '', Config::$usuario, Config::$clave);
         parent::setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         parent::exec("set names utf8");
     }
@@ -24,6 +24,15 @@ class modelo extends PDO{
         $resultado->execute();
         return $resultado;
     }
+    public function getLocalidades(){
+        $consulta="SELECT id_localidad,localidad FROM localidades";
+        $resultado=$this->prepare($consulta);
+        $resultado->execute();
+        return $resultado;
+        
+    }
+    
+    
     
     
 }
