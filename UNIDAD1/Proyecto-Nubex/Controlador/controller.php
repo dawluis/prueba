@@ -126,6 +126,10 @@ class Controller{
         require_once __DIR__ . '/../Vista/templates/nosotros.php';
     }
     
+    public function delete(){
+        
+    }
+    
  
 }
 

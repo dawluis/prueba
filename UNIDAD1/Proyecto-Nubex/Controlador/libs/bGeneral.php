@@ -200,13 +200,13 @@ function subidaArchivos($var,$dir,$max_file_size,$extensionesValidas){
         // Almacenamos el archivo en ubicación definitiva si no hay errores
         
         if (empty($erroresArchivos)) {
-            if(!is_dir("C:\Users\USUARIO\Desktop\ECLIPSE-REPO\prueba\UNIDAD1\Proyecto-Nubex\Archivos/".$dir)){
-                mkdir("C:\Users\USUARIO\Desktop\ECLIPSE-REPO\prueba\UNIDAD1\Proyecto-Nubex\Archivos/".$dir , 0700); 
+            if(!is_dir(__DIR__."/../../Archivos/".$dir)){
+                mkdir(__DIR__."/../../Archivos/".$dir , 0700); 
             }
             // Añadimo time() al nombre del fichero, así lo haremos único y si tuviera doble extensión
             // Haríamos inservible la segunda.
             $nombreArchivo = $arrayArchivo['filename'] . time();
-            $nombreCompleto = "C:\Users\USUARIO\Desktop\ECLIPSE-REPO\prueba\UNIDAD1\Proyecto-Nubex\Archivos"."/".$dir."/". $nombreArchivo . "." . $extension;
+            $nombreCompleto = __DIR__."/../../Archivos/"."/".$dir."/". $nombreArchivo . "." . $extension;
             // Movemos el fichero a la ubicación definitiva
             
             if (move_uploaded_file($directorioTemp, $nombreCompleto)) {

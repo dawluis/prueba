@@ -122,6 +122,10 @@ class Modelo extends PDO{
         
     }
     
+    public function deleteArchivo($nombreArchivo){
+        
+    }
+    
     
     
     
