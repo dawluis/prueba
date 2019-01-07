@@ -82,22 +82,44 @@ class Modelo extends PDO{
         
     }
     
-    public function archivo($idUsuario, $nombreArchivo, $ruta){
-        $sql="INSERT INTO archivos (id_usuario, nombre_archivo, ruta_archivo) VALUES (:id_usuario, :nombre_archivo, :ruta_archivo)";
+    public function archivo($idUsuario, $nombreArchivo, $ruta, $tipo){
+        $sql="INSERT INTO archivos (id_usuario, nombre_archivo, ruta_archivo, tipo_archivo) VALUES (:id_usuario, :nombre_archivo, :ruta_archivo, :tipo_archivo)";
         $prep=$this->prepare($sql);
         $prep->bindParam(':id_usuario', $idUsuario);
         $prep->bindParam(':nombre_archivo', $nombreArchivo);
         $prep->bindParam(':ruta_archivo', $ruta);
+        $prep->bindParam(':tipo_archivo', $tipo);
         $res=$prep->execute();
         
     }
     
     public function getArchivos($idUsuario){
-        $sql="SELECT nombre_archivo,ruta_archivo FROM archivos WHERE id_usuario= :id_usuario";
+        $sql="SELECT nombre_archivo,ruta_archivo,fecha_subida FROM archivos WHERE id_usuario= :id_usuario";
         $prep=$this->prepare($sql);
         $prep->bindParam(':id_usuario', $idUsuario);
         $prep->execute();
         return $prep;
+    }
+    
+    public function getArchivosPublicos(){
+        $sql="SELECT nombre_archivo,ruta_archivo,id_usuario,fecha_subida FROM archivos WHERE tipo_archivo='publico'";
+       
+        $consultaPublicos=$this->query($sql);        
+       
+        return $consultaPublicos;
+    }
+    
+    public function getNombre($id){
+        $sql="SELECT nombre FROM usuarios WHERE id_usuario=$id";
+        $resultado=$this->query($sql);
+        
+        while($res = $resultado->fetch()){
+            $nombre=$res['nombre'];
+        }
+        
+        return $nombre;
+       
+        
     }
     
     

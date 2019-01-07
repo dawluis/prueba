@@ -12,6 +12,9 @@ class Controller{
             'mensaje' => 'Bienvenido a NUBEX, una nueva manera de gestionar tus archivos',
             'fecha' => date('d-m-y'),
         );
+        
+        $m= new Modelo();
+        
         require __DIR__ . '/../Vista/templates/inicio.php';
     }
     public function registro(){
@@ -79,13 +82,16 @@ class Controller{
     
     public function subir(){
         $m= new Modelo();
+        if(isset($_SESSION['nombre'])){
         $idUsuario=$m->getId($_SESSION['nombre']);
         $res=$m->getArchivos($idUsuario);
+        }
         if(isset($_POST['enviar'])){
             if($_FILES['archivo']['name']==""){
                 $resultado= "INTRODUZCA ARCHIVO PARA SUBIR";
                 require_once __DIR__ . '/../Vista/templates/bienvenido.php';
             }else{
+                $tipo=$_POST['tipo'];
                 $var='archivo';
                 $dir=$_SESSION['nombre'];
                 $max_file_size=200000;
@@ -95,12 +101,16 @@ class Controller{
                 if(is_array($resultadoSubida)){
                     $resultado=print_r($resultadoSubida);
                     require_once __DIR__ . '/../Vista/templates/bienvenido.php';
+                
+                
                 }else{
+                    
                     $trozos=explode(',', $resultadoSubida);
                     $resultado= "SUBIDA CORRECTA";
                     
+                    
                     $idUsuario=$m->getId($_SESSION['nombre']);
-                    $m->archivo($idUsuario, $trozos[1] , $trozos[0]);
+                    $m->archivo($idUsuario, $trozos[1] , $trozos[0], $tipo);
                     
                     $res=$m->getArchivos($idUsuario);
                     
@@ -112,9 +122,13 @@ class Controller{
             require_once __DIR__ . '/../Vista/templates/bienvenido.php';
         }
     }
+    public function nosotros(){
+        require_once __DIR__ . '/../Vista/templates/nosotros.php';
+    }
     
  
 }
+
 
 
 

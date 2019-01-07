@@ -8,17 +8,23 @@
     <title>formulario-registro</title>
 </head>
 <body>
-<header>NUBEX</header>
- <nav>
-        <ul>
-            <li><a href="index.php?ctl=inicio">Inicio</a></li>
-             <?php if(!isset($_SESSION['nombre'])){echo "<li><a href='index.php?ctl=registro'>Registrarse</a></li>";}?>
-             <?php if(!isset($_SESSION['nombre'])){echo "<li><a href='index.php?ctl=login'>Iniciar Sesion</a></li>";}?>
-             <?php if(isset($_SESSION['nombre'])){echo "<li><a href='index.php?ctl=subir'>Mi Nubex</a></li>";}?>
-        </ul>
+    <header>
+        <div id="logo"><img src="img/cloud.png" alt="" width="100px"></div>
+        <div id="tittle"><h1>NUBEX</h1></div>
+    </header>
+    <nav>
+        <div class="nav-item"><a href="index.php?ctl=inicio">Inicio</a></div>
+        <?php if(!isset($_SESSION['nombre'])){echo "<div class='nav-item'><a href='index.php?ctl=registro'>Registrarse</a></div>";}?>
+        <?php if(!isset($_SESSION['nombre'])){echo "<div class='nav-item'><a href='index.php?ctl=login'>Iniciar Sesion</a></div>";}?>
+        <?php if(isset($_SESSION['nombre'])){echo "<div class='nav-item'><a href='index.php?ctl=subir'>Mi Nubex</a></div>";}?>
+        <?php if(isset($_SESSION['nombre'])){echo "<div class='nav-item'><a href='index.php?ctl=destroy'>Cerrar Sesion</a></div>";}?>
+        <div class="nav-item"><a href="index.php?ctl=nosotros">Nosotros</a></div>
     </nav>
-    <?php if(isset($_SESSION['nombre'])){echo "<a href='index.php?ctl=destroy'>Cerrar Sesion</a>";}?>
-
- <?php echo $contenido?>
+    <main>
+        <?php echo $contenido?>
+    </main>
+    <footer>
+        Footer
+    </footer>
 </body>
 </html>

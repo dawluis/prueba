@@ -6,8 +6,8 @@ $map = array(
     'registro'=> array('controller' => 'Controller', 'action'=>'registro'),
     'login'=> array('controller' => 'Controller', 'action'=>'login'),
     'subir'=> array('controller' => 'Controller', 'action'=>'subir'),
-    'destroy'=> array('controller' => 'Controller', 'action'=>'destroy')
-    
+    'destroy'=> array('controller' => 'Controller', 'action'=>'destroy'),
+    'nosotros'=> array('controller' => 'Controller', 'action'=>'nosotros')
 );
 
 if (isset($_GET['ctl'])) {
