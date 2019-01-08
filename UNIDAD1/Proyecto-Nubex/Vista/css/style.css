@@ -1,4 +1,4 @@
-header #logo, .nav-item {
+header #logo, header #bienvenido, .nav-item {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -55,14 +55,21 @@ header #tittle {
           align-items: center;
   text-align: center;
   color: #ffff;
-  -webkit-box-flex: 1;
-      -ms-flex: 1;
-          flex: 1;
+  -webkit-box-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
   text-align: center;
 }
 
 header #tittle h1 {
   text-align: center;
+}
+
+header #bienvenido {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  color: #ffff;
 }
 
 nav {
@@ -104,7 +111,7 @@ main {
   height: 1500px;
 }
 
-form {
+.form-container {
   background: #239cd3;
   max-height: 600px;
   max-width: 500px;
@@ -117,14 +124,44 @@ form {
   margin-right: auto;
 }
 
-form input[type=radio] {
-  width: auto;
-  height: auto;
+.form-subida {
+  background: #239cd3;
+  max-height: 600px;
+  max-width: 500px;
+  color: #ffff;
+  font-size: 1.5em;
+  padding: 20px;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 form input {
   width: 100%;
   height: 40px;
+}
+
+.two-forms {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.two-forms .formOne {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.two-forms .formTwo {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+form input[type=radio] {
+  width: auto;
+  height: auto;
 }
 
 input[type=submit] {
@@ -159,10 +196,9 @@ input[type=submit] {
   width: 50px;
 }
 
-.caja-archivo:hover .img-archivo {
-  width: 80px;
-  -webkit-transition: 2s;
-  transition: 2s;
+.caja-archivo form input[type=submit] {
+  background-color: #ff8800;
+  margin-top: 0px;
 }
 
 .img-nosotros {

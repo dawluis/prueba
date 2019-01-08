@@ -94,7 +94,7 @@ class Modelo extends PDO{
     }
     
     public function getArchivos($idUsuario){
-        $sql="SELECT nombre_archivo,ruta_archivo,fecha_subida FROM archivos WHERE id_usuario= :id_usuario";
+        $sql="SELECT nombre_archivo,ruta_archivo,fecha_subida,tipo_archivo FROM archivos WHERE id_usuario= :id_usuario ORDER BY fecha_subida desc";
         $prep=$this->prepare($sql);
         $prep->bindParam(':id_usuario', $idUsuario);
         $prep->execute();
@@ -123,9 +123,21 @@ class Modelo extends PDO{
     }
     
     public function deleteArchivo($nombreArchivo){
-        
+        $sql="DELETE FROM archivos WHERE nombre_archivo= :nombreArchivo";
+        $prep=$this->prepare($sql);
+        $prep->bindParam(':nombreArchivo', $nombreArchivo);
+        $resultado=$prep->execute();
+        return $resultado;
     }
     
+    public function moodArchivo($nombreArchivo,$tipoArchivo){
+        $sql="UPDATE archivos SET tipo_archivo=:tipoArchivo WHERE nombre_archivo= :nombreArchivo";
+        $prep=$this->prepare($sql);
+        $prep->bindParam(':tipoArchivo', $tipoArchivo);
+        $prep->bindParam(':nombreArchivo', $nombreArchivo);
+        $resultado=$prep->execute();
+        return $resultado;
+    }
     
     
     

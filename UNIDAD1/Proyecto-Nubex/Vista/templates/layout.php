@@ -11,6 +11,7 @@
     <header>
         <div id="logo"><img src="img/cloud.png" alt="" width="100px"></div>
         <div id="tittle"><h1>NUBEX</h1></div>
+        <div id="bienvenido"><?php if(isset($_SESSION['nombre'])){echo $_SESSION['nombre'];}?></div>
     </header>
     <nav>
         <div class="nav-item"><a href="index.php?ctl=inicio">Inicio</a></div>

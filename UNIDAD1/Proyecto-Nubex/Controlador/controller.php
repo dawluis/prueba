@@ -99,7 +99,7 @@ class Controller{
                 $resultadoSubida=subidaArchivos($var, $dir, $max_file_size, $extensionesValidas);
                 
                 if(is_array($resultadoSubida)){
-                    $resultado=print_r($resultadoSubida);
+                    $resultado=$resultadoSubida;
                     require_once __DIR__ . '/../Vista/templates/bienvenido.php';
                 
                 
@@ -127,9 +127,40 @@ class Controller{
     }
     
     public function delete(){
-        
+        $m=new Modelo();
+        $rutaArchivo=$_POST['rutaArchivo'];
+        if(is_file($rutaArchivo)){
+            $nombreArchivo=$_POST['nombreArchivo'];
+            $resultado=$m->deleteArchivo($nombreArchivo);
+            $borrado=unlink($rutaArchivo);
+            if($resultado===true){
+                $mensaje= "hola el archivo $nombreArchivo se ha eliminado correctamente de la base de datos y en los ficheros el resultado del borrado es $borrado";
+                
+            }else{
+                $mensaje= "hola el archivo $nombreArchivo no se ha podido borrar de la base de datos, intentelo de nuevo mas tarde";
+            }
+        }else{
+            $mensaje= "hola el archivo $nombreArchivo no esta";
+        }
+        require_once __DIR__ . '/../Vista/templates/modificado.php';
     }
     
+    public function mood(){
+        $m=new Modelo();
+        $tipoArchivo=$_POST['tipoArchivo'];
+        $nombreArchivo=$_POST['nombreArchivo'];
+        if($tipoArchivo=="publico"){
+            $resultado=$m->moodArchivo($nombreArchivo, "privado");
+            $mensaje="SE HA REALIZADO LA MODIFICACIÓN DE EL ARCHIVO".$nombreArchivo." ANTES ERA PÚBLICO Y AHORA ES PRIVADO";
+        }else{
+            $resultado=$m->moodArchivo($nombreArchivo, "publico");
+            $mensaje="SE HA REALIZADO LA MODIFICACIÓN DE EL ARCHIVO".$nombreArchivo." ANTES ERA PRIVADO Y AHORA ES PÚBLICO";
+        }
+        
+        require_once __DIR__ . '/../Vista/templates/modificado.php';
+        
+        
+    }
  
 }
 
