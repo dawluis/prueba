@@ -69,14 +69,13 @@ nav{
 }
 main{
 	transition: all 1s;
-	max-width: 1200px;
 	text-align: center;
 	color: rgba(0, 0, 0, 0.699);
 	margin: auto;
 	padding-top: 1px;
 	//background: url(../img/vector.png);
 	background-color: rgba(255, 255, 255, 0);
-	height: 1500px;
+	min-height: 1500px;
 }
 
 .form-container{
@@ -110,9 +109,13 @@ form input{
 	display: flex;
 	.formOne{
 		flex:1;
+		
 	}
 	.formTwo{
 		flex: 1;
+		input{
+			background-color: rgb(36, 39, 38);
+		}
 	}
 }
 form input[type=radio]{

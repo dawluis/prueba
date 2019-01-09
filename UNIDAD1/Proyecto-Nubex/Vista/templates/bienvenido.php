@@ -1,6 +1,4 @@
-<?php ob_start();
-if(isset($_SESSION['nombre'])){
-?>
+<?php ob_start();?>
 <h1>Bienvenido <?php echo $_SESSION['nombre']?></h1>
 <h4>Subir un archivo</h4>
 <?php if(isset($mensaje)){echo $mensaje;}?>
@@ -23,8 +21,10 @@ if(isset($_SESSION['nombre'])){
 while($resultado = $res->fetch()){
     if($resultado['tipo_archivo']=="publico"){
         $tipoArchivo="Privatizar";
+        $col="red";
     }else{
         $tipoArchivo="Publicar";
+        $col="green";
     }
     echo "<div class='caja-archivo'>
             <u>Nombre del archivo:</u><br>
@@ -41,7 +41,7 @@ while($resultado = $res->fetch()){
                     <input type='hidden' name='tipoArchivo' value='".$resultado['tipo_archivo']."'>
                     <input type='hidden' name='rutaArchivo' value='../Archivos/".$_SESSION['nombre']."/".$resultado['nombre_archivo']."'>
                     <input type='hidden' name='nombreArchivo' value='".$resultado['nombre_archivo']."'>
-                    <input type='submit' name='mood' value='".$tipoArchivo."'>
+                    <input type='submit' name='mood' value='".$tipoArchivo."' style='background-color:".$col."'>
                 </form>
             </div>
             <hr>
@@ -53,10 +53,5 @@ while($resultado = $res->fetch()){
 }
 ?>
 
-<?php $contenido = ob_get_clean();
-}else{
-    $contenido = "NECESITA ESTAR LOGEADO PARA ACCEDER A ESTA PAGINA";
-}
-
-?>
+<?php $contenido = ob_get_clean();?>
 <?php include 'layout.php' ?>

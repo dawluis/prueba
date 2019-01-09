@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once __DIR__.'/libs/ValidarFormulario.php';
 require_once __DIR__.'/libs/bGeneral.php';
 require_once  __DIR__.'/../Modelo/modelo.php';
@@ -44,7 +43,11 @@ class Controller{
     }
     public function login(){
         $m= new Modelo();
-       
+        if(isset($_SESSION['nombre'])){
+            $idUsuario=$m->getId($_SESSION['nombre']);
+            $res=$m->getArchivos($idUsuario);
+            require_once __DIR__ . '/../Vista/templates/bienvenido.php';
+        }else{
         if(isset($_POST['enviar'])){
             $nombreUsuario=recoge('nombreUsuario');
             $contrasena= recoge('contrasena');
@@ -68,6 +71,7 @@ class Controller{
         
         }else{
             require_once __DIR__ . '/../Vista/templates/form-login.php';
+        }
         }
     }
     
@@ -147,17 +151,23 @@ class Controller{
     
     public function mood(){
         $m=new Modelo();
+        if(isset($_SESSION['nombre'])){
+            $idUsuario=$m->getId($_SESSION['nombre']);
+            $res=$m->getArchivos($idUsuario);
+        }
         $tipoArchivo=$_POST['tipoArchivo'];
         $nombreArchivo=$_POST['nombreArchivo'];
         if($tipoArchivo=="publico"){
             $resultado=$m->moodArchivo($nombreArchivo, "privado");
             $mensaje="SE HA REALIZADO LA MODIFICACIÓN DE EL ARCHIVO".$nombreArchivo." ANTES ERA PÚBLICO Y AHORA ES PRIVADO";
+            header('location:index.php?ctl=login');
         }else{
             $resultado=$m->moodArchivo($nombreArchivo, "publico");
             $mensaje="SE HA REALIZADO LA MODIFICACIÓN DE EL ARCHIVO".$nombreArchivo." ANTES ERA PRIVADO Y AHORA ES PÚBLICO";
+            header('location:index.php?ctl=login');
         }
         
-        require_once __DIR__ . '/../Vista/templates/modificado.php';
+        //require_once __DIR__ . '/../Vista/templates/bienvenido.php';
         
         
     }
