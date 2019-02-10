@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+<title>Título del RSS</title>
+<description>Descripción del RSS</description>
+<link>http://www.sitiodelquesedeseapublicar.com/main.html</link>
+<lastBuildDate>Mon, 06 Jan 2013 00:01:00</lastBuildDate>
+<pubDate>Mon, 06 Jan 2013 16:20:00/pubDate</pubDate>
+<item>
+<autor>Juan</autor>
+<titulo>Es un alumno muy aplicado</titulo>
+<contenido>Erase una vez un chaval muy aplicado que...</contenido>
+</item>
+</channel>
+<item><autor>asdasd</autor><titulo>adsasda</titulo><contenido>asdad</contenido><fecha_publicacion>0808-0202-2019</fecha_publicacion></item></rss>

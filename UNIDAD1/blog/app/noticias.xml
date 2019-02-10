@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+<title>Título del RSS</title>
+<description>Descripción del RSS</description>
+<link>http://www.sitiodelquesedeseapublicar.com/main.html</link>
+<lastBuildDate>Mon, 06 Jan 2013 00:01:00</lastBuildDate>
+<pubDate>Mon, 06 Jan 2013 16:20:00/pubDate</pubDate>
+<item>
+	<autor>prueba</autor>
+	<titulo>buena</titulo>
+	<contenido>articuno</contenido>
+	<fecha_publicacion>08-02-2019</fecha_publicacion>
+</item>
+<item>
+	<autor>Jose</autor>
+	<titulo>Rebajas</titulo>
+	<contenido>vuelves las rebajas al corte ingles</contenido>
+	<fecha_publicacion>08-02-2019</fecha_publicacion>
+</item>
+</channel>
+</rss>

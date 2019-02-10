@@ -1,0 +1,30 @@
+<cine>
+    <pelicula categoria="accion">
+        <titulo idioma="ingles">Mad Max</titulo>
+        <director>George Miller</director>
+        <ticket>8</ticket>
+        <reparto>Tom Hardy</reparto>
+        <reparto>Charlize Theron</reparto>
+        <reparto>Nicholas Hoult</reparto>
+    </pelicula>
+    <pelicula categoria="animacion">
+        <titulo idioma="ingles">Inside Out</titulo>
+        <director>Pete Docter</director>
+        <ticket>10</ticket>
+        <reparto>Amy Poehler</reparto>
+        <reparto>Phyllis Smith</reparto>
+        <reparto>Bill Hader</reparto>
+    </pelicula>
+</cine>
+
+Se podrían emplear las siguientes expresiones XPath:
+	
+Expresión XPath 	Resultado
+/cine/pelicula[1] 	Selecciona el primer elemento pelicula del elemento cine
+/cine/pelicula[last()] 	Selecciona el último elemento pelicula del elemento cine
+/cine/pelicula[last()-1] 	Selecciona el penúltimo elemento pelicula del elemento cine
+/cine/pelicula[position()<3] 	Selecciona los dos primeros elementos película del elemento cine
+//titulo[@idioma] 	Selecciona todos los elementos titulo que tienen el atributo idioma
+//titulo[@idioma='ingles'] 	Selecciona todos los elementos titulo que tienen el atributo idioma con el valor ingles
+/cine/pelicula[ticket>8] 	Selecciona todos los elementos pelicula del elemento cine que tienen un elemento ticket mayor que 8
+/cine/pelicula[ticket>8]/titulo

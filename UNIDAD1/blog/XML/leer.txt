@@ -1,0 +1,25 @@
+En los siguientes ejemplos vemos como trabajar con archivos XML sencillos.
+En los primeros ejemplos mostramos con print_r la estructura recogida.
+
+Los ficheros ejemplo_1.php, ejemplo_2.php y ejemplo_3.php muestran varias
+ maneras de obtener en contenido del fichero XML:
+ 
+ ejemplo_4.php muestra cómo acceder a los atributos 
+ 
+ ejemplo_5.php muestra cómo utilizar XPATH con SimpleXML
+ 
+ ejemplo_6.php modificación de valor
+ 
+ ejemplo_7 añadir elementos al árbol
+ 
+ ejemplo_8 método child() que muestra los hijos de un nodo
+ 
+ ejemplo_9.php método count()
+ 
+ ejemplo_10.php attributes()
+ 
+ ejemplo_11.php Tratamiento de errores
+ 
+ 
+ Dentro de la carpeta DTD podemos ver un fichero que está asociado a un DTD y como parseándolo
+ con este DTD creado especificamente para el documento.
